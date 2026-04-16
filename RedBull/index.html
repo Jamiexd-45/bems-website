@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BEMS Repair Services WLL</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:#0b1220;
+      color:#eaeef5;
+      overflow-x:hidden;
+    }
+
+    h1,h2,h3{
+      font-family:'Poppins',sans-serif;
+      color:#ffffff;
+    }
+
+    /* ================= LOADER ================= */
+    #loader{
+      position:fixed;
+      inset:0;
+      background:#0b1220;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      z-index:9999;
+      color:white;
+      transition:0.6s;
+    }
+
+    .spinner{
+      width:60px;
+      height:60px;
+      border:4px solid rgba(255,255,255,0.2);
+      border-top:4px solid #f57c00;
+      border-radius:50%;
+      animation:spin 1s linear infinite;
+      margin-bottom:15px;
+    }
+
+    @keyframes spin{
+      0%{transform:rotate(0)}
+      100%{transform:rotate(360deg)}
+    }
+
+    /* ================= NAV ================= */
+    .navbar{
+      position:fixed;
+      top:0;
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      padding:18px 50px;
+      background:rgba(10,15,25,0.6);
+      backdrop-filter:blur(12px);
+      z-index:1000;
+    }
+
+    .navbar a{
+      color:#eaeef5;
+      margin-left:20px;
+      text-decoration:none;
+      transition:0.3s;
+    }
+
+    .navbar a:hover{
+      color:#f57c00;
+    }
+
+    /* ================= HERO ================= */
+    .hero{
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+      background:
+        radial-gradient(circle at top, rgba(245,124,0,0.2), transparent 50%),
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)),
+        url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=80');
+      background-size:cover;
+      background-position:center;
+    }
+
+    .hero h1{
+      font-size:52px;
+      margin-bottom:15px;
+    }
+
+    .hero p{
+      max-width:750px;
+      margin:auto;
+      opacity:0.85;
+      margin-bottom:25px;
+      color:#cbd5e1;
+    }
+
+    /* ================= BUTTONS ================= */
+    .btn{
+      padding:14px 26px;
+      border-radius:8px;
+      text-decoration:none;
+      display:inline-block;
+      margin:6px;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    .primary{
+      background:linear-gradient(135deg,#f57c00,#ff9a3d);
+      color:white;
+      box-shadow:0 10px 25px rgba(245,124,0,0.25);
+    }
+
+    .primary:hover{
+      transform:translateY(-4px);
+    }
+
+    .secondary{
+      background:rgba(255,255,255,0.08);
+      color:white;
+      border:1px solid rgba(255,255,255,0.1);
+    }
+
+    .secondary:hover{
+      transform:translateY(-4px);
+    }
+
+    /* ================= SECTIONS ================= */
+    section{
+      padding:100px 20px;
+      text-align:center;
+    }
+
+    .section-sub{
+      max-width:750px;
+      margin:0 auto 40px;
+      opacity:0.7;
+      color:#cbd5e1;
+    }
+
+    /* ================= CARDS ================= */
+    .grid{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:25px;
+    }
+
+    .card,.box{
+      width:280px;
+      background:rgba(255,255,255,0.06);
+      padding:25px;
+      border-radius:14px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.4);
+      backdrop-filter:blur(10px);
+      transition:0.4s;
+      opacity:0;
+      transform:translateY(40px);
+      color:#eaeef5;
+    }
+
+    .card:hover,.box:hover{
+      transform:translateY(-8px);
+    }
+
+    .card i{
+      font-size:28px;
+      color:#f57c00;
+      margin-bottom:10px;
+    }
+
+    /* ================= MAP ================= */
+    iframe{
+      width:90%;
+      height:350px;
+      border:0;
+      border-radius:12px;
+    }
+
+    /* ================= ANIMATION ================= */
+    .show{
+      opacity:1 !important;
+      transform:translateY(0) !important;
+      transition:0.8s ease;
+    }
+
+    /* MOBILE */
+    @media(max-width:768px){
+      .hero h1{font-size:32px;}
+      .navbar{padding:15px 20px;}
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="spinner"></div>
+  <h2>BEMS</h2>
+  <p>Loading industrial services...</p>
+</div>
+
+<!-- NAV -->
+<div class="navbar">
+  <div><strong>BEMS</strong></div>
+  <div>
+    <a href="#">Home</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>Industrial Repair Experts</h1>
+    <p>
+      BEMS Repair Services WLL is a trusted industrial maintenance company in Bahrain.
+      We specialize in motor winding, generators, compressors, and heavy machinery repair
+      with over 10 years of experience.
+    </p>
+
+    <a href="tel:+97333181125" class="btn primary">Call Now</a>
+    <a href="#services" class="btn secondary">Our Services</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section>
+  <h2>About BEMS</h2>
+  <p class="section-sub">
+    Based in Salmabad, Bahrain, we provide reliable electrical and mechanical repair solutions
+    for industrial clients across multiple sectors.
+  </p>
+
+  <div class="grid">
+    <div class="box reveal">
+      <h3>📍 Location</h3>
+      <p>Salmabad, Bahrain</p>
+    </div>
+
+    <div class="box reveal">
+      <h3>⚙️ Services</h3>
+      <p>Motors, compressors, generators, industrial machines</p>
+    </div>
+
+    <div class="box reveal">
+      <h3>🏆 Experience</h3>
+      <p>10+ years in industrial repair industry</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <h2>Our Services</h2>
+  <p class="section-sub">Reliable industrial maintenance solutions.</p>
+
+  <div class="grid">
+    <div class="card reveal">
+      <i class="fas fa-bolt"></i>
+      <h3>Motor Winding</h3>
+      <p>Precision rewinding for industrial motors.</p>
+    </div>
+
+    <div class="card reveal">
+      <i class="fas fa-cogs"></i>
+      <h3>Mechanical Repair</h3>
+      <p>Generators, compressors, and heavy equipment repair.</p>
+    </div>
+
+    <div class="card reveal">
+      <i class="fas fa-tools"></i>
+      <h3>Maintenance</h3>
+      <p>Preventive maintenance for long-term reliability.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section>
+  <h2>Find Us</h2>
+  <p class="section-sub">Located in Salmabad Industrial Area, Bahrain</p>
+
+  <iframe
+    src="https://www.google.com/maps?q=Salmabad,Bahrain&output=embed">
+  </iframe>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact</h2>
+
+  <div class="grid">
+    <div class="box reveal">
+      <h3>📞 Phone</h3>
+      <p>+973 3318 1125</p>
+      <p>+973 3442 7650</p>
+    </div>
+
+    <div class="box reveal">
+      <h3>✉️ Email</h3>
+      <p>info@bemsbahrain.com</p>
+    </div>
+
+    <div class="box reveal">
+      <h3>🕒 Hours</h3>
+      <p>Sat–Thu: 8AM–5PM</p>
+      <p>Friday: Closed</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <h2>Need urgent repair?</h2>
+  <p class="section-sub">Contact BEMS for fast industrial service support.</p>
+
+  <a href="tel:+97333181125" class="btn primary">Call Now</a>
+</section>
+
+<!-- FOOTER -->
+<footer style="text-align:center;padding:25px;background:#070b12;">
+  <p>© 2026 BEMS Repair Services WLL</p>
+  <p>Salmabad, Bahrain</p>
+</footer>
+
+<!-- SCRIPT -->
+<script>
+  window.addEventListener("load", () => {
+    const loader = document.getElementById("loader");
+    setTimeout(() => {
+      loader.style.opacity = "0";
+      loader.style.visibility = "hidden";
+    }, 800);
+  });
+
+  const items = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("show");
+      }
+    });
+  }, { threshold: 0.15 });
+
+  items.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
